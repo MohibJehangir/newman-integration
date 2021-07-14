@@ -1,0 +1,19 @@
+#!groovy
+
+pipeline {
+    agent any
+    tools {
+        maven 'maven'
+        jdk 'JDK'
+        nodejs 'nodejs'
+    }
+    stages {
+        
+stage('Newman') {
+            steps {
+				sh "cd $WORKSPACE/mochaapptest && npm install -g newman && newman run Get_Req.postman_collection.json"
+            }
+        }
+				
+        }
+    }
